@@ -1,4 +1,4 @@
-##CovidESP
+# CovidESP
 ### Actividad de aprendizaje 2ª EV - Acceso a Datos
 Creación de una API REST con Springboot para la gestión y obtención de los datos de 
 Covid-19 en España.
@@ -11,9 +11,12 @@ Clases a tratar:
 - Pacientes
 - Vacunas
 
+
+---
+
 ### API REST - CRUD
 
-CCAA - Comunidades autónomas ---------------------------------------------------------- 
+***CCAA*** - Comunidades autónomas ---------------------------------------------------------- 
 
 | ENDPOINT | HTTP | DESCRIPTION |
 | --- | --- | --- | 
@@ -24,7 +27,7 @@ CCAA - Comunidades autónomas --------------------------------------------------
 | /ccaa/:id | DELETE | Borra una comunidad autónoma por ID | 
 
 
-CIUDADES --------------------------------------------------------------------
+***CIUDADES*** --------------------------------------------------------------------
 
 | ENDPOINT | HTTP | DESCRIPTION |
 | --- | --- | --- | 
@@ -36,7 +39,7 @@ CIUDADES --------------------------------------------------------------------
 
 
 
-HOSPITALES ------------------------------------------------------------------
+***HOSPITALES*** ------------------------------------------------------------------
 
 | ENDPOINT | HTTP | DESCRIPTION |
 | --- | --- | --- | 
@@ -48,7 +51,7 @@ HOSPITALES ------------------------------------------------------------------
 
 
 
-PACIENTES -------------------------------------------------------------------
+***PACIENTES*** -------------------------------------------------------------------
 
 | ENDPOINT | HTTP | DESCRIPTION |
 | --- | --- | --- | 
@@ -60,7 +63,7 @@ PACIENTES -------------------------------------------------------------------
 
 
 
-VACUNAS ---------------------------------------------------------------------
+***VACUNAS*** ---------------------------------------------------------------------
 
 | ENDPOINT | HTTP | DESCRIPTION |
 | --- | --- | --- | 
@@ -70,7 +73,16 @@ VACUNAS ---------------------------------------------------------------------
 | /vacunas/:id | PUT | Actualiza una vacuna | 
 | /vacunas/:id | DELETE | Borra una vacuna por ID | 
 
+---
 
+## CREACIÓN DB + USER
 
+~~~
+CREATE DATABASE covidesp;
+CREATE USER nombre IDENTIFIED BY 'password';
+GRANT ALL PRIVILEGES ON covidesp.* TO nombre;
+~~~
+
+---
 
 ## Capturas de pantalla del portal de Swagger
