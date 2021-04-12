@@ -82,7 +82,18 @@ CREATE DATABASE covidesp;
 CREATE USER nombre IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON covidesp.* TO nombre;
 ~~~
+---
+#### ¡¡¡¡ ATENCIÓN !!!!
+Todas las tablas y relaciones de la base de datos se crearán de forma automática 
+gracias a Hibernate y JPA
 
 ---
+
+## DIAGRÁMA ENTIDAD-RELACIÓN
+
+![img_2.png](img_2.png)
+
+---
+
 
 ## Capturas de pantalla del portal de Swagger
