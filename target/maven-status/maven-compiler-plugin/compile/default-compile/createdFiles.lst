@@ -1,6 +1,6 @@
-com\sanvalero\covidesp\controller\WebController.class
 com\sanvalero\covidesp\CovidespApplication.class
 com\sanvalero\covidesp\domain\ComunidadAutonoma.class
+com\sanvalero\covidesp\controller\prueba.class
 com\sanvalero\covidesp\domain\Hospital.class
 com\sanvalero\covidesp\domain\Ciudad.class
 com\sanvalero\covidesp\domain\Vacuna.class
