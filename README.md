@@ -97,3 +97,7 @@ gracias a Hibernate y JPA
 
 
 ## Capturas de pantalla del portal de Swagger
+
+- URL: http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
+
+![img.png](img.png)

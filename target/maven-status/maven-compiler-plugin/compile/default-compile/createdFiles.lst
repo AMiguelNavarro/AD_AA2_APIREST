@@ -8,6 +8,7 @@ com\sanvalero\covidesp\service\paciente\PacienteServiceImp.class
 com\sanvalero\covidesp\service\ciudad\CiudadServiceImp.class
 com\sanvalero\covidesp\repository\PacienteRepository.class
 com\sanvalero\covidesp\configuration\ApiConfigSwagger.class
+com\sanvalero\covidesp\controller\errors\ccaa\CCAANotFoundException.class
 com\sanvalero\covidesp\controller\CCAAController.class
 com\sanvalero\covidesp\controller\CiudadController.class
 com\sanvalero\covidesp\repository\CiudadRepository.class
@@ -17,8 +18,10 @@ com\sanvalero\covidesp\domain\Vacuna.class
 com\sanvalero\covidesp\service\vacuna\VacunaServiceImp.class
 com\sanvalero\covidesp\domain\Paciente.class
 com\sanvalero\covidesp\service\ciudad\CiudadServiceApiInterface.class
+com\sanvalero\covidesp\controller\errors\Response$Error.class
 com\sanvalero\covidesp\controller\VacunaController.class
 com\sanvalero\covidesp\repository\VacunaRepository.class
+com\sanvalero\covidesp\controller\errors\Response.class
 com\sanvalero\covidesp\service\ccaa\CCAAServiceImp.class
 com\sanvalero\covidesp\service\hospital\HospitalServiceImp.class
 com\sanvalero\covidesp\service\vacuna\VacunaServiceApiInterface.class
