@@ -47,6 +47,8 @@ public class Ciudad {
     @Column
     private LocalDate fechaPrimerPositivo;
 
-//    private ComunidadAutonoma comunidadAutonoma; // FK de la base de datos -- Relacion 1:N
+    @ManyToOne
+    @JoinColumn(name = "ccaa_id")
+    private ComunidadAutonoma comunidadAutonoma; // FK de la base de datos -- Relacion 1:N
 
 }

@@ -8,10 +8,11 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
-@NoArgsConstructor
+@NoArgsConstructor // Sin constructor vacio Spring siempre da fallo, lo necesita para la BD y el CRUD repository
 @Entity(name = "comunidadesAutonomas")
 public class ComunidadAutonoma {
 
@@ -45,5 +46,9 @@ public class ComunidadAutonoma {
     @Column
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate fechaPrimerPositivo;
+
+
+    @OneToMany(mappedBy = "comunidadAutonoma") // Se debe poner el nombre de comunidad que se ha dado en ciudad
+    private List<Ciudad> listadoCiudades;
 
 }

@@ -83,8 +83,7 @@ public class CCAAController {
     @Operation(summary = "Elimina una Comunidad Autónoma")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200" , description = "Se elimina correctamente", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class)))),
-            @ApiResponse(responseCode = "404" , description = "La comunidad a eliminar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class)))),
-            @ApiResponse(responseCode = "405" , description = "No se permite borrar todos los datos", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
+            @ApiResponse(responseCode = "404" , description = "La comunidad a eliminar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
     })
     @DeleteMapping(value = "/ccaa/{id}", produces = "application/json")
     public ResponseEntity<Response> deleteCCAA(@PathVariable long id) {
@@ -108,18 +107,5 @@ public class CCAAController {
     }
 
 
-    /**
-     * Para controlar la excepción METHOD_NOT_ALLOWED ERROR CODE 405
-     * @param ccaanfe
-     * @return
-     */
-    @ExceptionHandler(CCAANotFoundException.class)
-    @ResponseBody
-    @ResponseStatus(HttpStatus.METHOD_NOT_ALLOWED)
-    public ResponseEntity<Response> handleNotAllowedException(CCAANotFoundException ccaanfe) {
-        Response response = Response.errorResponse(METHOD_NOT_ALLOWED, ccaanfe.getMessage());
-//        logger.error(ccaanfe.getMessage(), ccaanfe);
-        return new ResponseEntity<>(response, HttpStatus.METHOD_NOT_ALLOWED);
-    }
 
 }
