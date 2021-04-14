@@ -40,6 +40,12 @@ public class Paciente {
     @Column
     private LocalDate fechaIngreso;
 
-//    private Hospital hospital; // FK base de datos -- Relacion 1:N
+    @ManyToOne
+    @JoinColumn(name = "hospital_id")
+    private Hospital hospital; // FK base de datos -- Relacion 1:N
+
+    @ManyToOne()
+    @JoinColumn(name = "vacuna_id")
+    private Vacuna vacuna; // FK base de datos -- Relacion 1:N
 
 }

@@ -8,8 +8,10 @@ com\sanvalero\covidesp\service\paciente\PacienteServiceImp.class
 com\sanvalero\covidesp\service\ciudad\CiudadServiceImp.class
 com\sanvalero\covidesp\repository\PacienteRepository.class
 com\sanvalero\covidesp\configuration\ApiConfigSwagger.class
+com\sanvalero\covidesp\domain\dto\PacienteDTO.class
 com\sanvalero\covidesp\controller\errors\ccaa\CCAANotFoundException.class
 com\sanvalero\covidesp\controller\CCAAController.class
+com\sanvalero\covidesp\domain\dto\HospitalDTO.class
 com\sanvalero\covidesp\controller\CiudadController.class
 com\sanvalero\covidesp\repository\CiudadRepository.class
 com\sanvalero\covidesp\controller\HospitalController.class

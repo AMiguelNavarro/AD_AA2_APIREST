@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -44,7 +45,10 @@ public class Hospital {
     @Column
     private LocalDate fechaCreacion;
 
-//    private Ciudad ciudad; // FK base de datos -- Relacion 1:N
-//    private Vacuna vacuna; // FK base de datos -- Relacion N:N
+    @ManyToOne
+    @JoinColumn(name = "ciudad_id")
+    private Ciudad ciudad; // FK base de datos -- Relacion 1:N
+
+
 
 }

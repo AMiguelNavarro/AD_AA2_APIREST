@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -39,5 +40,9 @@ public class Vacuna {
     @Schema(description = "Tiene algún efecto secundario (true, false)", example = "true")
     @Column
     private boolean efectosSecundarios;
+
+
+    @OneToMany(mappedBy = "vacuna")
+    private List<Paciente> listadoPacientes;
 
 }

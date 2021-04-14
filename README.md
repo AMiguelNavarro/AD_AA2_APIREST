@@ -91,7 +91,7 @@ gracias a Hibernate y JPA
 
 ## DIAGRÁMA ENTIDAD-RELACIÓN
 
-![img_2.png](img_2.png)
+![img_1.png](img_1.png)
 
 ---
 
