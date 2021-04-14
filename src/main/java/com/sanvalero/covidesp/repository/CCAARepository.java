@@ -15,5 +15,6 @@ public interface CCAARepository extends CrudRepository<ComunidadAutonoma, Long> 
     // Se pueden sobreescribir los que se quiera, en este caso sobreescribo el findAll porque el de serie
     // de CRUDrepository devuelve un iterable y así devuelve una lista
     List<ComunidadAutonoma> findAll();
+    ComunidadAutonoma findByNombre(String nombre);
 
 }

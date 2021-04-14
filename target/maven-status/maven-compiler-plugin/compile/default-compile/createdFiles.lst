@@ -20,6 +20,7 @@ com\sanvalero\covidesp\domain\Paciente.class
 com\sanvalero\covidesp\service\ciudad\CiudadServiceApiInterface.class
 com\sanvalero\covidesp\controller\errors\Response$Error.class
 com\sanvalero\covidesp\controller\VacunaController.class
+com\sanvalero\covidesp\domain\dto\CiudadDTO.class
 com\sanvalero\covidesp\repository\VacunaRepository.class
 com\sanvalero\covidesp\controller\errors\Response.class
 com\sanvalero\covidesp\service\ccaa\CCAAServiceImp.class
