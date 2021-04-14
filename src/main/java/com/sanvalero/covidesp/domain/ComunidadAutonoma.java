@@ -47,8 +47,4 @@ public class ComunidadAutonoma {
     @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate fechaPrimerPositivo;
 
-
-    @OneToMany(mappedBy = "comunidadAutonoma") // Se debe poner el nombre de comunidad que se ha dado en ciudad
-    private List<Ciudad> listadoCiudades;
-
 }
