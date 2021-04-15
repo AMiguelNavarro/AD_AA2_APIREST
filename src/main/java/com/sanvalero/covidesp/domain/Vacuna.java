@@ -1,10 +1,12 @@
 package com.sanvalero.covidesp.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -42,7 +44,8 @@ public class Vacuna {
     private boolean efectosSecundarios;
 
 
-    @OneToMany(mappedBy = "vacuna")
+    @OneToMany(mappedBy = "vacuna", cascade = CascadeType.REMOVE)
+//    @JsonBackReference
     private List<Paciente> listadoPacientes;
 
 }

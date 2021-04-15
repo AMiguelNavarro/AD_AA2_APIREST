@@ -1,5 +1,6 @@
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\repository\VacunaRepository.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\service\paciente\PacienteServiceApiInterface.java
+D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\controller\errors\hospital\HospitalNotFoundException.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\service\paciente\PacienteServiceImp.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\domain\ComunidadAutonoma.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\repository\PacienteRepository.java
@@ -17,6 +18,7 @@ D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\c
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\domain\dto\PacienteDTO.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\service\hospital\HospitalServiceImp.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\domain\Vacuna.java
+D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\controller\errors\ciudad\CiudadNotFoundException.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\service\ccaa\CCAAServiceApiInterface.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\repository\HospitalRepository.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\repository\CiudadRepository.java
