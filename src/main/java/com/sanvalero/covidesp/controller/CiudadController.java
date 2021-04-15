@@ -60,7 +60,7 @@ public class CiudadController {
     @Operation(summary = "Modifica una ciudad")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201" , description = "Se modifica correctamente", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Ciudad.class)))),
-            @ApiResponse(responseCode = "404" , description = "La ciudad a eliminar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
+            @ApiResponse(responseCode = "404" , description = "La ciudad a modificar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
     })
     @PutMapping(value = "/ciudades/{id}", produces = "application/json")
     public ResponseEntity<Ciudad> modifyAll(@PathVariable long id, @RequestBody CiudadDTO ciudadDTO) {
@@ -71,6 +71,12 @@ public class CiudadController {
 
 
 
+    /*-------- ELIMINA UNA CIUDAD ENTERA */
+    @Operation(summary = "Elimina una ciudad")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201" , description = "Se elimina correctamente", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Ciudad.class)))),
+            @ApiResponse(responseCode = "404" , description = "La ciudad a eliminar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
+    })
     @DeleteMapping(value = "/ciudades/{id}", produces = "application/json")
     public ResponseEntity<Response> deleteOne(@PathVariable long id) {
         ciudadServiceApiInterface.deleteOne(id);

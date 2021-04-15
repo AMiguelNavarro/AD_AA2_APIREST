@@ -2,10 +2,17 @@ package com.sanvalero.covidesp.controller;
 
 import com.sanvalero.covidesp.controller.errors.Response;
 import com.sanvalero.covidesp.controller.errors.hospital.HospitalNotFoundException;
+import com.sanvalero.covidesp.domain.Ciudad;
 import com.sanvalero.covidesp.domain.ComunidadAutonoma;
 import com.sanvalero.covidesp.domain.Hospital;
 import com.sanvalero.covidesp.domain.dto.HospitalDTO;
 import com.sanvalero.covidesp.service.hospital.HospitalServiceApiInterface;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,12 +28,25 @@ public class HospitalController {
     @Autowired
     private HospitalServiceApiInterface hospitalServiceApiInterface;
 
+
+    /*-------- LISTAR TODOS LOS HOSPITALES */
+    @Operation(summary = "Obtiene un listado con todos los hospitales")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Listado de hospitales", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Hospital.class))))
+    })
     @GetMapping(value = "/hospitales", produces = "application/json")
     public ResponseEntity<List<Hospital>> getAll() {
         List<Hospital> listadoHospitales = hospitalServiceApiInterface.findAllHospitales();
         return new ResponseEntity<>(listadoHospitales, HttpStatus.OK);
     }
 
+
+    /*-------- AÑADIR UN HOSPITAL NUEVO */
+    @Operation(summary = "Añade un hospital")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201" , description = "Se añade correctamente", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Hospital.class)))),
+            @ApiResponse(responseCode = "409" , description = "El hospital ya existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
+    })
     @PostMapping(value = "/hospitales", produces = "application/json")
     public ResponseEntity<Hospital> addNew(@RequestBody HospitalDTO hospitalDTO) {
 
@@ -35,8 +55,32 @@ public class HospitalController {
         return new ResponseEntity<>(nuevoHospital, HttpStatus.CREATED);
     }
 
-//    @PutMapping(value = "/hospitales/{id}", produces = "application/json")
-//    @DeleteMapping(value = "/hospitales/{id}", produces = "application/json")
+
+    /*-------- MODIFICAR UN HOSPITAL ENTERO */
+    @Operation(summary = "Modifica un hospital")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201" , description = "Se modifica correctamente", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Ciudad.class)))),
+            @ApiResponse(responseCode = "404" , description = "El hospital a modificar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
+    })
+    @PutMapping(value = "/hospitales/{id}", produces = "application/json")
+    public ResponseEntity<Hospital> modifyAllFromHospital(@PathVariable long id, @RequestBody HospitalDTO hospitalDTO) {
+        Hospital hospital = hospitalServiceApiInterface.modifyAllFromHospital(id, hospitalDTO);
+        return new ResponseEntity<>(hospital, HttpStatus.CREATED);
+    }
+
+
+
+    /*-------- ELIMINA UN HOSPITAL ENTERO */
+    @Operation(summary = "Elimina un hospital")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "201" , description = "Se elimina correctamente", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Ciudad.class)))),
+            @ApiResponse(responseCode = "404" , description = "El hospital a eliminar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
+    })
+    @DeleteMapping(value = "/hospitales/{id}", produces = "application/json")
+    public ResponseEntity<Response> deleteHospital(@PathVariable long id) {
+        hospitalServiceApiInterface.deleteHospital(id);
+        return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
 
 
 

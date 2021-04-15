@@ -71,7 +71,7 @@ public class CCAAController {
     @Operation(summary = "Modifica una Comunidad Autónoma")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201" , description = "Se modifica correctamente", content = @Content(array = @ArraySchema(schema = @Schema(implementation = ComunidadAutonoma.class)))),
-            @ApiResponse(responseCode = "404" , description = "La comunidad a eliminar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
+            @ApiResponse(responseCode = "404" , description = "La comunidad a modificar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
     })
     @PutMapping(value = "/ccaa/{id}", produces = "application/json")
     public ResponseEntity<ComunidadAutonoma> modifyAllFromCCAA(@PathVariable long id, @RequestBody ComunidadAutonoma nuevaCCCAA) {
