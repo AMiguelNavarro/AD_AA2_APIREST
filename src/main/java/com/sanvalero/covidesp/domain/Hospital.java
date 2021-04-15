@@ -1,6 +1,7 @@
 package com.sanvalero.covidesp.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -43,6 +44,7 @@ public class Hospital {
 
     @Schema(description = "Fecha de creación del hospital", example = "1987-05-24")
     @Column
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate fechaCreacion;
 
     @ManyToOne

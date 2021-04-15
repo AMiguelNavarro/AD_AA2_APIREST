@@ -15,7 +15,6 @@ import java.time.LocalDate;
 @NoArgsConstructor
 public class CiudadDTO {
 
-    private long id;
     private String nombre;
     private float extension;
     private int dosisRecibidas;
