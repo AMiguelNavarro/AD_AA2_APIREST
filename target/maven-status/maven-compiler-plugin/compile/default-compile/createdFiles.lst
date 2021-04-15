@@ -2,6 +2,7 @@ com\sanvalero\covidesp\CovidespApplication.class
 com\sanvalero\covidesp\domain\Hospital.class
 com\sanvalero\covidesp\repository\HospitalRepository.class
 com\sanvalero\covidesp\service\hospital\HospitalServiceApiInterface.class
+com\sanvalero\covidesp\controller\errors\ciudad\CiudadNotFoundException.class
 com\sanvalero\covidesp\service\paciente\PacienteServiceApiInterface.class
 com\sanvalero\covidesp\service\ccaa\CCAAServiceApiInterface.class
 com\sanvalero\covidesp\service\paciente\PacienteServiceImp.class
