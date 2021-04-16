@@ -24,8 +24,10 @@ public class CCAAServiceImp implements CCAAServiceApiInterface{
     }
 
     @Override
-    public Optional<ComunidadAutonoma> findById(long id) {
-        return ccaaRepository.findById(id);
+    public ComunidadAutonoma findById(long id) {
+        val comunidadSeleccionada = (ccaaRepository.findById(id)
+                .orElseThrow(() -> new CCAANotFoundException(id)));
+        return comunidadSeleccionada;
     }
 
     @Override

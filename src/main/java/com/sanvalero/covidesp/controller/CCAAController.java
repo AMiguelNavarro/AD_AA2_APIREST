@@ -11,6 +11,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.val;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,8 @@ public class CCAAController {
     @Autowired
     private CCAAServiceApiInterface ccaaServiceApiInterface;
 
+    private final Logger logger = LoggerFactory.getLogger(CCAAController.class);
+
 
     @Operation(summary = "Obtiene un listado con todas las Comunidades Autónomas")
     @ApiResponses(value = {
@@ -37,6 +42,7 @@ public class CCAAController {
     @GetMapping(value = "/ccaa", produces = "application/json")
     public ResponseEntity<List<ComunidadAutonoma>> getAll() {
         List<ComunidadAutonoma> listadoCCAA = ccaaServiceApiInterface.findAllCCAA();
+        logger.info("Se listan todas las CCAA");
         return new ResponseEntity<>(listadoCCAA, HttpStatus.OK);
     }
 
@@ -49,8 +55,8 @@ public class CCAAController {
     })
     @GetMapping(value = "/ccaa/{id}", produces = "application/json")
     public ResponseEntity<ComunidadAutonoma> getById(@PathVariable long id) {
-        ComunidadAutonoma ccaa = ccaaServiceApiInterface.findById(id)
-                .orElseThrow(() -> new CCAANotFoundException(id));
+        ComunidadAutonoma ccaa = ccaaServiceApiInterface.findById(id);
+        logger.info("Se ve la comunidad autónoma con ID -> " + id);
         return new ResponseEntity<>(ccaa, HttpStatus.OK);
     }
 
@@ -63,8 +69,9 @@ public class CCAAController {
     })
     @PostMapping(value = "/ccaa", produces = "application/json")
     public ResponseEntity<ComunidadAutonoma> addNew(@RequestBody ComunidadAutonoma comunidadAutonoma) {
-        ccaaServiceApiInterface.addNew(comunidadAutonoma);
-        return new ResponseEntity<>(comunidadAutonoma, HttpStatus.CREATED);
+        val nuevaCCAA = ccaaServiceApiInterface.addNew(comunidadAutonoma);
+        logger.info("Se añade la comunidad autónoma con ID -> " + comunidadAutonoma.getId());
+        return new ResponseEntity<>(nuevaCCAA, HttpStatus.CREATED);
     }
 
 
@@ -75,7 +82,8 @@ public class CCAAController {
     })
     @PutMapping(value = "/ccaa/{id}", produces = "application/json")
     public ResponseEntity<ComunidadAutonoma> modifyAllFromCCAA(@PathVariable long id, @RequestBody ComunidadAutonoma nuevaCCCAA) {
-        ComunidadAutonoma ccaa = ccaaServiceApiInterface.modififyCCAA(id, nuevaCCCAA);
+        val ccaa = ccaaServiceApiInterface.modififyCCAA(id, nuevaCCCAA);
+        logger.info("Se modifica la comunidad autónoma con ID -> " + id);
         return new ResponseEntity<>(ccaa, HttpStatus.CREATED);
     }
 
@@ -88,6 +96,7 @@ public class CCAAController {
     @DeleteMapping(value = "/ccaa/{id}", produces = "application/json")
     public ResponseEntity<Response> deleteCCAA(@PathVariable long id) {
         ccaaServiceApiInterface.deleteCCAA(id);
+        logger.info("Se elimina la comunidad autónoma con ID -> " + id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
 
@@ -102,7 +111,7 @@ public class CCAAController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Response> handleNotFoundException(CCAANotFoundException ccaanfe) {
         Response response = Response.errorResponse(NOT_FOUND, ccaanfe.getMessage());
-//        logger.error(ccaanfe.getMessage(), ccaanfe);
+        logger.error(ccaanfe.getMessage(), ccaanfe);
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 

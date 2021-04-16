@@ -14,6 +14,9 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.val;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +31,8 @@ public class HospitalController {
     @Autowired
     private HospitalServiceApiInterface hospitalServiceApiInterface;
 
+    private final Logger logger = LoggerFactory.getLogger(HospitalController.class);
+
 
     /*-------- LISTAR TODOS LOS HOSPITALES */
     @Operation(summary = "Obtiene un listado con todos los hospitales")
@@ -37,6 +42,7 @@ public class HospitalController {
     @GetMapping(value = "/hospitales", produces = "application/json")
     public ResponseEntity<List<Hospital>> getAll() {
         List<Hospital> listadoHospitales = hospitalServiceApiInterface.findAllHospitales();
+        logger.info("Se listan todos los hospitales");
         return new ResponseEntity<>(listadoHospitales, HttpStatus.OK);
     }
 
@@ -50,8 +56,8 @@ public class HospitalController {
     @PostMapping(value = "/hospitales", produces = "application/json")
     public ResponseEntity<Hospital> addNew(@RequestBody HospitalDTO hospitalDTO) {
 
-        Hospital nuevoHospital = hospitalServiceApiInterface.addNew(hospitalDTO);
-
+        val nuevoHospital = hospitalServiceApiInterface.addNew(hospitalDTO);
+        logger.info("Se añade un nuevo hospital con ID -> " + nuevoHospital.getId());
         return new ResponseEntity<>(nuevoHospital, HttpStatus.CREATED);
     }
 
@@ -64,7 +70,8 @@ public class HospitalController {
     })
     @PutMapping(value = "/hospitales/{id}", produces = "application/json")
     public ResponseEntity<Hospital> modifyAllFromHospital(@PathVariable long id, @RequestBody HospitalDTO hospitalDTO) {
-        Hospital hospital = hospitalServiceApiInterface.modifyAllFromHospital(id, hospitalDTO);
+        val hospital = hospitalServiceApiInterface.modifyAllFromHospital(id, hospitalDTO);
+        logger.info("Se modifica el hospital con ID -> " + id);
         return new ResponseEntity<>(hospital, HttpStatus.CREATED);
     }
 
@@ -79,6 +86,7 @@ public class HospitalController {
     @DeleteMapping(value = "/hospitales/{id}", produces = "application/json")
     public ResponseEntity<Response> deleteHospital(@PathVariable long id) {
         hospitalServiceApiInterface.deleteHospital(id);
+        logger.info("Se elimina el hospital con ID -> " + id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
 
@@ -89,7 +97,7 @@ public class HospitalController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<Response> handleNotFoundException(HospitalNotFoundException hnfe) {
         Response response = Response.errorResponse(Response.NOT_FOUND, hnfe.getMessage());
-//      logger.error(hnfe.getMessage(), hnfe);
+        logger.error(hnfe.getMessage(), hnfe);
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 

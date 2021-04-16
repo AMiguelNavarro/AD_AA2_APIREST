@@ -14,6 +14,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.val;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +30,8 @@ public class PacienteController {
     @Autowired
     private PacienteServiceApiInterface pacienteServiceApiInterface;
 
+    private final Logger logger = LoggerFactory.getLogger(PacienteController.class);
+
     /*-------- LISTAR TODOS LOS PACIENTES */
     @Operation(summary = "Lista todos los pacientes")
     @ApiResponses(value =  {
@@ -36,6 +40,7 @@ public class PacienteController {
     @GetMapping(value = "/pacientes", produces = "application/json")
     public ResponseEntity<List<Paciente>> getAll() {
         List<Paciente> listaPacientes = pacienteServiceApiInterface.findAll();
+        logger.info("Se listan todos los pacientes");
         return new ResponseEntity<>(listaPacientes, HttpStatus.OK);
     }
 
@@ -49,8 +54,8 @@ public class PacienteController {
     @PostMapping(value = "/pacientes", produces = "application/json")
     public ResponseEntity<Paciente> addNew(@RequestBody PacienteDTO pacienteDTO) {
 
-        Paciente nuevoPaciente = pacienteServiceApiInterface.addNew(pacienteDTO);
-
+        val nuevoPaciente = pacienteServiceApiInterface.addNew(pacienteDTO);
+        logger.info("Se añade un nuevo paciente con ID -> " + nuevoPaciente.getId());
         return new ResponseEntity<>(nuevoPaciente, HttpStatus.CREATED);
     }
 
@@ -65,7 +70,7 @@ public class PacienteController {
     public ResponseEntity<Paciente> modifyPaciente(@PathVariable long id, @RequestBody PacienteDTO pacienteDTO) {
 
         val pacienteModificado = pacienteServiceApiInterface.modifyPaciente(id, pacienteDTO);
-
+        logger.info("Se modifica el paciente con ID -> " + id);
         return new ResponseEntity<>(pacienteModificado, HttpStatus.CREATED);
     }
 
@@ -80,7 +85,7 @@ public class PacienteController {
     public ResponseEntity<Response> deletePaciente(@PathVariable long id) {
 
         pacienteServiceApiInterface.deletePaciente(id);
-
+        logger.info("Se borra el paciente con ID -> " + id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
 

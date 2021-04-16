@@ -12,6 +12,8 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.val;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,6 +28,8 @@ public class VacunaController {
     @Autowired
     private VacunaServiceApiInterface vacunaServiceApiInterface;
 
+    private final Logger logger = LoggerFactory.getLogger(VacunaController.class);
+
 
     /*-------- LISTAR TODOS LAS VACUNAS */
     @Operation(summary = "Lista todos las vacunas")
@@ -35,6 +39,7 @@ public class VacunaController {
     @GetMapping(value = "/vacunas", produces = "application/json")
     public ResponseEntity<List<Vacuna>> getAll() {
         List<Vacuna> listaVacunas = vacunaServiceApiInterface.findAll();
+        logger.info("Se listan todas las vacunas");
         return new ResponseEntity<>(listaVacunas, HttpStatus.OK);
     }
 
@@ -48,6 +53,7 @@ public class VacunaController {
     @PostMapping(value = "/vacunas", produces = "application/json")
     public ResponseEntity<Vacuna> addNew(@RequestBody Vacuna vacuna) {
         val nuevaVacuna = vacunaServiceApiInterface.addNew(vacuna);
+        logger.info("Se añade la vacuna con ID -> " + nuevaVacuna.getId());
         return new ResponseEntity<>(nuevaVacuna, HttpStatus.CREATED);
     }
 
@@ -61,6 +67,7 @@ public class VacunaController {
     @PutMapping(value = "/vacunas/{id}", produces = "application/json")
     public ResponseEntity<Vacuna> modifyVacuna(@PathVariable long id, @RequestBody Vacuna vacuna) {
         val vacunaModificar = vacunaServiceApiInterface.modifyVacuna(id, vacuna);
+        logger.info("Se modifica la vacuna con ID -> " + id);
         return new ResponseEntity<>(vacunaModificar, HttpStatus.CREATED);
     }
 
@@ -74,6 +81,7 @@ public class VacunaController {
     @DeleteMapping(value = "/vacunas/{id}", produces = "application/json")
     public ResponseEntity<Response> deleteVacuna(@PathVariable long id) {
         vacunaServiceApiInterface.deleteVacuna(id);
+        logger.info("Se elimina la vacuna con ID -> " + id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
 

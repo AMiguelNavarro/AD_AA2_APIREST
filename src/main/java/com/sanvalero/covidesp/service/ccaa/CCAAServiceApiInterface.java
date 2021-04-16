@@ -11,7 +11,7 @@ import java.util.Optional;
 public interface CCAAServiceApiInterface {
 
     List<ComunidadAutonoma> findAllCCAA();
-    Optional<ComunidadAutonoma> findById(long id);
+    ComunidadAutonoma findById(long id);
     ComunidadAutonoma addNew(ComunidadAutonoma ccaa);
     ComunidadAutonoma modififyCCAA(long id, ComunidadAutonoma ccaa);
     void deleteCCAA(long id);
