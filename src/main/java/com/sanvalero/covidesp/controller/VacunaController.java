@@ -6,4 +6,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @Tag(name = "Vacunas", description = "Listado de vacunas")
 public class VacunaController {
+
+
 }
