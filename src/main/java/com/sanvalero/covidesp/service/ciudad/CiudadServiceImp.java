@@ -52,6 +52,11 @@ public class CiudadServiceImp implements CiudadServiceApiInterface{
     }
 
     @Override
+    public List<Ciudad> findFiltradas(int numeroHabitantes, int dosisVacunaAdministradas, boolean planDeVacunacion) {
+        return ciudadRepository.findFiltradas(numeroHabitantes, dosisVacunaAdministradas, planDeVacunacion);
+    }
+
+    @Override
     public Ciudad modifyAll(long id, CiudadDTO nuevaCiudadDTO) {
 
         val ciudadSeleccionada = ciudadRepository.findById(id)

@@ -9,6 +9,7 @@ public interface CiudadServiceApiInterface {
 
     Ciudad addNew(CiudadDTO ciudadDTO);
     List<Ciudad> findAll();
+    List<Ciudad> findFiltradas(int numeroHabitantes, int dosisVacunaAdministradas, boolean planDeVacunacion);
     Ciudad modifyAll(long id, CiudadDTO nuevaCiudadDTO);
     void deleteOne(long id);
 

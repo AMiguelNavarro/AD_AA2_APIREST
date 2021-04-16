@@ -43,6 +43,23 @@ public class CiudadController {
         return new ResponseEntity<>(listadoCiudades, HttpStatus.OK);
     }
 
+
+
+    /*-------- LISTAR TODAS LAS CIUDADES CON 3 PARÁMETROS */
+    @Operation(summary = "Obtiene un listado con todas las ciudades filtrando por 3 parámetros")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Listado de ciudades filtradas por 3 parámetros", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Ciudad.class))))
+    })
+    @GetMapping(value = "/ciudades/filtro", produces = "application/json")
+    public ResponseEntity<List<Ciudad>> getFiltradas(@RequestParam(name = "numeroHabitantes") int numeroHabitantes,
+                                                     @RequestParam(name = "dosisVacunaAdministradas") int dosisVacunaAdministradas,
+                                                     @RequestParam(name = "planDeVacunacion") boolean planDeVacunacion) {
+        List<Ciudad> listadoCiudadesFiltradas = ciudadServiceApiInterface.findFiltradas(numeroHabitantes, dosisVacunaAdministradas, planDeVacunacion);
+        return new ResponseEntity<>(listadoCiudadesFiltradas, HttpStatus.OK);
+    }
+
+
+
     /*-------- AÑADIR UNA CIUDAD NUEVA */
     @Operation(summary = "Añade una ciudad")
     @ApiResponses(value = {
