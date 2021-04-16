@@ -1,6 +1,7 @@
 package com.sanvalero.covidesp.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -41,6 +42,7 @@ public class Paciente {
     @Schema(description = "Fecha de ingreso en el hospital", example = "2020-04-02")
     @Column
     private LocalDate fechaIngreso;
+
 
     @ManyToOne
     @JoinColumn(name = "hospital_id")

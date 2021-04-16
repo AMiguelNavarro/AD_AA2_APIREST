@@ -12,4 +12,5 @@ import java.util.Optional;
 public interface HospitalRepository extends CrudRepository<Hospital, Long> {
 
     List<Hospital> findAll();
+    Optional<Hospital> findByNombre(String nombreHospital);
 }

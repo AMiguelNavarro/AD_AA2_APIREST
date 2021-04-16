@@ -1,7 +1,9 @@
 package com.sanvalero.covidesp.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -54,6 +56,9 @@ public class Hospital {
     @JoinColumn(name = "ciudad_id")
     private Ciudad ciudad; // FK base de datos -- Relacion 1:N
 
+    @JsonBackReference //  Si hay mas de uno en la misma clase hay que ponerle nombre con 'value'
+    @OneToMany(mappedBy = "hospital", cascade = CascadeType.REMOVE)
+    private List<Paciente> listaPacientes;
 
 
 }
