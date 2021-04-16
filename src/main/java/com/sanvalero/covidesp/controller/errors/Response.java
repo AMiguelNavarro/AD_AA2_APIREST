@@ -16,7 +16,7 @@ public class Response {
     public static final int NOT_FOUND = 404;
     public static final int METHOD_NOT_ALLOWED = 405;
 
-    public static final String NO_MESSAGE = "";
+    public static final String MESSAGE = "Operación realizada con éxito";
 
     private Error error;
 
@@ -28,7 +28,7 @@ public class Response {
     }
 
     public static Response noErrorResponse() {
-        return new Response(new Error(NO_ERROR, NO_MESSAGE));
+        return new Response(new Error(NO_ERROR, MESSAGE));
     }
 
     public static Response errorResponse(int errorCode, String errorMessage) {

@@ -2,6 +2,7 @@ package com.sanvalero.covidesp.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,6 +38,7 @@ public class Vacuna {
 
     @Schema(description = "Fecha de creación de la vacuna", example = "2021-02-06")
     @Column
+    @JsonFormat(pattern = "dd/MM/yyyy")
     private LocalDate fechaCreacion;
 
     @Schema(description = "Tiene algún efecto secundario (true, false)", example = "true")
@@ -44,8 +46,8 @@ public class Vacuna {
     private boolean efectosSecundarios;
 
 
+    @JsonBackReference
     @OneToMany(mappedBy = "vacuna", cascade = CascadeType.REMOVE)
-//    @JsonBackReference
     private List<Paciente> listadoPacientes;
 
 }

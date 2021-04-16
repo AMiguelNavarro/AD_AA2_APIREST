@@ -68,8 +68,10 @@ public class PacienteServiceImp implements PacienteServiceApiInterface{
         val pacienteSeleccionado = pacienteRepository.findById(id)
                 .orElseThrow(() -> new PacienteNotFoundException(id));
 
+        System.out.println(pacienteDTO.getNombreHospital());
+
         val hospitalSeleccionado = hospitalRepository.findByNombre(pacienteDTO.getNombreHospital())
-                .orElseThrow(() -> new HospitalNotFoundException("El hospital" + pacienteDTO.getNombreHospital() + "no existe"));
+                .orElseThrow(() -> new HospitalNotFoundException("El hospital " + pacienteDTO.getNombreHospital() + " no existe"));
 
         Vacuna vacunaSeleccionada;
 

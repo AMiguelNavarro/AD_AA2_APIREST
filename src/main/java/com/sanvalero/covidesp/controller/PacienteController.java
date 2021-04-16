@@ -62,7 +62,7 @@ public class PacienteController {
             @ApiResponse(responseCode = "404" , description = "El paciente a modificar no existe", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Response.class))))
     })
     @PutMapping(value = "/pacientes/{id}", produces = "application/json")
-    public ResponseEntity<Paciente> modifyPaciente(@PathVariable long id, PacienteDTO pacienteDTO) {
+    public ResponseEntity<Paciente> modifyPaciente(@PathVariable long id, @RequestBody PacienteDTO pacienteDTO) {
 
         val pacienteModificado = pacienteServiceApiInterface.modifyPaciente(id, pacienteDTO);
 
