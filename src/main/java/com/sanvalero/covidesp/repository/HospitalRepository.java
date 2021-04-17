@@ -5,6 +5,7 @@ import com.sanvalero.covidesp.domain.dto.CiudadDTO;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,4 +14,5 @@ public interface HospitalRepository extends CrudRepository<Hospital, Long> {
 
     List<Hospital> findAll();
     Optional<Hospital> findByNombre(String nombreHospital);
+    List<Hospital> findByFechaCreacionAfter(LocalDate fecha);
 }

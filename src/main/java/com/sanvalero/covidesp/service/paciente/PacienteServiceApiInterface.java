@@ -11,5 +11,5 @@ public interface PacienteServiceApiInterface {
     Paciente addNew(PacienteDTO pacienteDTO);
     Paciente modifyPaciente(long id, PacienteDTO pacienteDTO);
     void deletePaciente(long id);
-
+    List<Paciente> findByPositivoCovid(boolean positivoCovid);
 }

@@ -1,7 +1,8 @@
 package com.sanvalero.covidesp.controller;
 
 import com.sanvalero.covidesp.controller.errors.Response;
-import com.sanvalero.covidesp.domain.Paciente;
+import com.sanvalero.covidesp.controller.errors.hospital.HospitalNotFoundException;
+import com.sanvalero.covidesp.controller.errors.vacuna.VacunaNotFoundException;
 import com.sanvalero.covidesp.domain.Vacuna;
 import com.sanvalero.covidesp.service.vacuna.VacunaServiceApiInterface;
 import io.swagger.v3.oas.annotations.Operation;
@@ -85,5 +86,28 @@ public class VacunaController {
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
 
+
+
+    /*-------- LISTAR TODOS LAS VACUNAS CON PORCENTAJE DE INMUNIDAD MAYOR QUE EL INDICADO */
+    @Operation(summary = "Lista todos las vacunas con % de inmunidad mayor que el indicado")
+    @ApiResponses(value =  {
+            @ApiResponse(responseCode = "200", description = "Se listan correctamente las vacunas", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Vacuna.class))))
+    })
+    @GetMapping(value = "/vacunas/inmunidad", produces = "application/json")
+    public ResponseEntity<List<Vacuna>> getVacunasPorcentajeInmunidad(@RequestParam(name = "porcentajeInmunidad") float porcentajeInmunidad) {
+        List<Vacuna> listadoVacunas = vacunaServiceApiInterface.findByPorcentajeInmunidadGreaterThan(porcentajeInmunidad);
+        return new ResponseEntity<>(listadoVacunas, HttpStatus.OK);
+    }
+
+
+
+    @ExceptionHandler(VacunaNotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Response> handleNotFoundException(HospitalNotFoundException hnfe) {
+        Response response = Response.errorResponse(Response.NOT_FOUND, hnfe.getMessage());
+        logger.error(hnfe.getMessage(), hnfe);
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
 
 }

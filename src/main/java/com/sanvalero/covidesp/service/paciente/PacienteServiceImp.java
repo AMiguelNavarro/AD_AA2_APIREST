@@ -101,4 +101,9 @@ public class PacienteServiceImp implements PacienteServiceApiInterface{
 
         pacienteRepository.delete(pacienteSeleccionado);
     }
+
+    @Override
+    public List<Paciente> findByPositivoCovid(boolean positivoCovid) {
+        return pacienteRepository.findByPositivoCovid(positivoCovid);
+    }
 }

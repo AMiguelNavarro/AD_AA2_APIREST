@@ -22,6 +22,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @RestController
@@ -89,6 +91,25 @@ public class HospitalController {
         logger.info("Se elimina el hospital con ID -> " + id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
     }
+
+
+
+
+    /*-------- LISTAR TODOS LOS HOSPITALES CON FECHA DE CREACIÓN MAYOR DE LA INTRODUCIDA COMO PARÁMETRO */
+    @Operation(summary = "Obtiene un listado con todos los hospitales con fecha de creación mayor que el parámetro")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200" , description = "Listado de hospitales", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Hospital.class))))
+    })
+    @GetMapping(value = "hospitales/fecha", produces = "application/json")
+    public ResponseEntity<List<Hospital>> getHospitalesCreados(@RequestParam(name = "fechaCreacion") String fechaCreacion) {
+        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate fechaFormateada = LocalDate.parse(fechaCreacion, formato);
+        List<Hospital> listadoHospitales = hospitalServiceApiInterface.findByFechaCreacionAfter(fechaFormateada);
+        return new ResponseEntity<>(listadoHospitales, HttpStatus.OK);
+    }
+
+
+
 
 
 

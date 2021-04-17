@@ -1,6 +1,8 @@
 package com.sanvalero.covidesp.controller;
 
 import com.sanvalero.covidesp.controller.errors.Response;
+import com.sanvalero.covidesp.controller.errors.hospital.HospitalNotFoundException;
+import com.sanvalero.covidesp.controller.errors.paciente.PacienteNotFoundException;
 import com.sanvalero.covidesp.domain.Ciudad;
 import com.sanvalero.covidesp.domain.Hospital;
 import com.sanvalero.covidesp.domain.Paciente;
@@ -87,6 +89,32 @@ public class PacienteController {
         pacienteServiceApiInterface.deletePaciente(id);
         logger.info("Se borra el paciente con ID -> " + id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
+
+
+
+    /*-------- LISTAR TODOS LOS PACIENTES FILTRANDO SI SON POSITIVO EN COVID O NO */
+    @Operation(summary = "Lista todos los pacientes true/false en covid")
+    @ApiResponses(value =  {
+            @ApiResponse(responseCode = "200", description = "Se listan correctamente los pacientes", content = @Content(array = @ArraySchema(schema = @Schema(implementation = Paciente.class))))
+    })
+    @GetMapping(value = "/pacientes/covid", produces = "application/json")
+    public ResponseEntity<List<Paciente>> getPacientesFiltroCovid(@RequestParam(name = "positivoCovid") boolean positivoCovid) {
+        List<Paciente> listadoPacientesFiltrados = pacienteServiceApiInterface.findByPositivoCovid(positivoCovid);
+        return new ResponseEntity<>(listadoPacientesFiltrados, HttpStatus.OK);
+    }
+
+
+
+
+
+    @ExceptionHandler(PacienteNotFoundException.class)
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ResponseEntity<Response> handleNotFoundException(HospitalNotFoundException hnfe) {
+        Response response = Response.errorResponse(Response.NOT_FOUND, hnfe.getMessage());
+        logger.error(hnfe.getMessage(), hnfe);
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
 }

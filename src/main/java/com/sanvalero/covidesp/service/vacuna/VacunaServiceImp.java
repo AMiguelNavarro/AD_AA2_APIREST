@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class VacunaServiceImp implements VacunaServiceApiInterface{
@@ -48,5 +47,10 @@ public class VacunaServiceImp implements VacunaServiceApiInterface{
                 .orElseThrow(() -> new VacunaNotFoundException(id));
 
         vacunaRepository.delete(vacunaBorrar);
+    }
+
+    @Override
+    public List<Vacuna> findByPorcentajeInmunidadGreaterThan(float porcentajeInmunidad) {
+        return vacunaRepository.findByPorcentajeInmunidadGreaterThan(porcentajeInmunidad);
     }
 }

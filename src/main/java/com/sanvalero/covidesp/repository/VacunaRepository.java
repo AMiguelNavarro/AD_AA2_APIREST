@@ -12,5 +12,5 @@ public interface VacunaRepository extends CrudRepository<Vacuna, Long> {
 
     List<Vacuna> findAll();
     Optional<Vacuna> findByNombre(String nombreVacuna);
-
+    List<Vacuna> findByPorcentajeInmunidadGreaterThan(float porcentajeInmunidad);
 }

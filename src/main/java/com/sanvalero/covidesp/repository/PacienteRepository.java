@@ -10,5 +10,6 @@ import java.util.List;
 public interface PacienteRepository extends CrudRepository<Paciente, Long> {
 
     List<Paciente> findAll();
+    List<Paciente> findByPositivoCovid(boolean positivo);
 
 }

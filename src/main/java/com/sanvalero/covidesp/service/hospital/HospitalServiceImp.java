@@ -11,6 +11,7 @@ import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -70,6 +71,11 @@ public class HospitalServiceImp implements HospitalServiceApiInterface{
                 .orElseThrow(() -> new HospitalNotFoundException(id));
 
         hospitalRepository.delete(hospital);
+    }
+
+    @Override
+    public List<Hospital> findByFechaCreacionAfter(LocalDate fecha) {
+        return hospitalRepository.findByFechaCreacionAfter(fecha);
     }
 
 

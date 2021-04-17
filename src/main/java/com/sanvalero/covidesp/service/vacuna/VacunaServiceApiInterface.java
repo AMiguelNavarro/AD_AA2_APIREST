@@ -11,5 +11,5 @@ public interface VacunaServiceApiInterface {
     Vacuna addNew(Vacuna vacuna);
     Vacuna modifyVacuna(long id, Vacuna vacuna);
     void deleteVacuna(long id);
-
+    List<Vacuna> findByPorcentajeInmunidadGreaterThan(float porcentajeInmunidad);
 }
