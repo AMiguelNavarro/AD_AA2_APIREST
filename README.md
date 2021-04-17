@@ -101,3 +101,7 @@ gracias a Hibernate y JPA
 - URL: http://localhost:8080/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config
 
 ![img.png](img.png)
+
+![img_3.png](img_3.png)
+
+![img_4.png](img_4.png)
