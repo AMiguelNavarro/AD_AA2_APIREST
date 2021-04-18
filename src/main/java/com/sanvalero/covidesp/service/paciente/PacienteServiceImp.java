@@ -106,4 +106,12 @@ public class PacienteServiceImp implements PacienteServiceApiInterface{
     public List<Paciente> findByPositivoCovid(boolean positivoCovid) {
         return pacienteRepository.findByPositivoCovid(positivoCovid);
     }
+
+    @Override
+    public Paciente modifyPositivoCovid(long id, boolean positivo) {
+        val paciente = pacienteRepository.findById(id)
+                .orElseThrow(() -> new PacienteNotFoundException(id));
+        paciente.setPositivoCovid(positivo);
+        return pacienteRepository.save(paciente);
+    }
 }

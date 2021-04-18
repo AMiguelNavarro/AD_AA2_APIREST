@@ -52,4 +52,12 @@ public class CCAAServiceImp implements CCAAServiceApiInterface{
 
         ccaaRepository.delete(ccaaDelete);
     }
+
+    @Override
+    public ComunidadAutonoma modifyPositivoUltima24Horas(long id, boolean positivoUltimas24Horas) {
+        val comunidadSeleccionada = ccaaRepository.findById(id)
+                .orElseThrow(() -> new CCAANotFoundException(id));
+        comunidadSeleccionada.setPositivoUltimas24Horas(positivoUltimas24Horas);
+        return ccaaRepository.save(comunidadSeleccionada);
+    }
 }

@@ -101,6 +101,23 @@ public class CCAAController {
     }
 
 
+
+
+
+    @Operation(summary = "Modifica el valor positivos en las ultima 24 horas de una comunidad autónoma")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Se ha modificado correctamente",content = @Content(schema = @Schema(implementation = ComunidadAutonoma.class))),
+            @ApiResponse(responseCode = "404", description = "La comunidad autónoma no existe", content = @Content(schema = @Schema(implementation = Response.class)))
+    })
+    @PatchMapping(value = "/ccaa/{id}/cambiar-positivo24horas", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<ComunidadAutonoma> modifyPositivoUltimas24Horas(@PathVariable long id, @RequestBody String positivoUltimas24Horas) {
+        boolean positivo = Boolean.parseBoolean(positivoUltimas24Horas);
+        val comunidadAutonomaModificada = ccaaServiceApiInterface.modifyPositivoUltima24Horas(id, positivo);
+        return new ResponseEntity<>(comunidadAutonomaModificada, HttpStatus.OK);
+    }
+
+
+
     /**
      * Para controlar la excepción NOT_FOUND ERROR CODE 404
      * @param ccaanfe

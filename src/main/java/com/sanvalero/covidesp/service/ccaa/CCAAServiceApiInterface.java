@@ -15,5 +15,5 @@ public interface CCAAServiceApiInterface {
     ComunidadAutonoma addNew(ComunidadAutonoma ccaa);
     ComunidadAutonoma modififyCCAA(long id, ComunidadAutonoma ccaa);
     void deleteCCAA(long id);
-
+    ComunidadAutonoma modifyPositivoUltima24Horas(long id, boolean positivoUltimas24Horas);
 }

@@ -4,6 +4,7 @@ import com.sanvalero.covidesp.controller.errors.Response;
 import com.sanvalero.covidesp.controller.errors.hospital.HospitalNotFoundException;
 import com.sanvalero.covidesp.controller.errors.paciente.PacienteNotFoundException;
 import com.sanvalero.covidesp.domain.Ciudad;
+import com.sanvalero.covidesp.domain.ComunidadAutonoma;
 import com.sanvalero.covidesp.domain.Hospital;
 import com.sanvalero.covidesp.domain.Paciente;
 import com.sanvalero.covidesp.domain.dto.PacienteDTO;
@@ -102,6 +103,20 @@ public class PacienteController {
     public ResponseEntity<List<Paciente>> getPacientesFiltroCovid(@RequestParam(name = "positivoCovid") boolean positivoCovid) {
         List<Paciente> listadoPacientesFiltrados = pacienteServiceApiInterface.findByPositivoCovid(positivoCovid);
         return new ResponseEntity<>(listadoPacientesFiltrados, HttpStatus.OK);
+    }
+
+
+
+    @Operation(summary = "Modifica el valor si es positivo en covid el paciente")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Se ha modificado correctamente",content = @Content(schema = @Schema(implementation = Paciente.class))),
+            @ApiResponse(responseCode = "404", description = "El paciente no existe", content = @Content(schema = @Schema(implementation = Response.class)))
+    })
+    @PatchMapping(value = "/pacientes/{id}/cambiar-positivoCovid", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Paciente> modifyPositivoUltimas24Horas(@PathVariable long id, @RequestBody String positivoCovid) {
+        boolean positivo = Boolean.parseBoolean(positivoCovid);
+        val paciente = pacienteServiceApiInterface.modifyPositivoCovid(id, positivo);
+        return new ResponseEntity<>(paciente, HttpStatus.OK);
     }
 
 
