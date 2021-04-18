@@ -1,9 +1,11 @@
 com\sanvalero\covidesp\CovidespApplication.class
 com\sanvalero\covidesp\domain\Hospital.class
+com\sanvalero\covidesp\jwtAutorizacion\JWTAutorizacionFiltro.class
 com\sanvalero\covidesp\repository\HospitalRepository.class
 com\sanvalero\covidesp\service\hospital\HospitalServiceApiInterface.class
 com\sanvalero\covidesp\controller\errors\paciente\PacienteNotFoundException.class
 com\sanvalero\covidesp\controller\errors\ciudad\CiudadNotFoundException.class
+com\sanvalero\covidesp\domain\Usuario.class
 com\sanvalero\covidesp\service\paciente\PacienteServiceApiInterface.class
 com\sanvalero\covidesp\controller\errors\hospital\HospitalNotFoundException.class
 com\sanvalero\covidesp\service\ccaa\CCAAServiceApiInterface.class
@@ -22,6 +24,7 @@ com\sanvalero\covidesp\controller\HospitalController.class
 com\sanvalero\covidesp\domain\Ciudad.class
 com\sanvalero\covidesp\domain\Vacuna.class
 com\sanvalero\covidesp\service\vacuna\VacunaServiceImp.class
+com\sanvalero\covidesp\controller\UsuarioController.class
 com\sanvalero\covidesp\domain\Paciente.class
 com\sanvalero\covidesp\service\ciudad\CiudadServiceApiInterface.class
 com\sanvalero\covidesp\controller\errors\Response$Error.class
@@ -31,6 +34,7 @@ com\sanvalero\covidesp\repository\VacunaRepository.class
 com\sanvalero\covidesp\controller\errors\Response.class
 com\sanvalero\covidesp\service\ccaa\CCAAServiceImp.class
 com\sanvalero\covidesp\service\hospital\HospitalServiceImp.class
+com\sanvalero\covidesp\CovidespApplication$WebSecurityConfig.class
 com\sanvalero\covidesp\service\vacuna\VacunaServiceApiInterface.class
 com\sanvalero\covidesp\domain\ComunidadAutonoma.class
 com\sanvalero\covidesp\repository\CCAARepository.class
