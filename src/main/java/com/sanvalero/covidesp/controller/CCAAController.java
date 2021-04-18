@@ -113,6 +113,7 @@ public class CCAAController {
     public ResponseEntity<ComunidadAutonoma> modifyPositivoUltimas24Horas(@PathVariable long id, @RequestBody String positivoUltimas24Horas) {
         boolean positivo = Boolean.parseBoolean(positivoUltimas24Horas);
         val comunidadAutonomaModificada = ccaaServiceApiInterface.modifyPositivoUltima24Horas(id, positivo);
+        logger.info("Se modifica el valor de positivo en las últimas 24 horas de la comunidad autónoma con ID -> " + id + " a: " + positivoUltimas24Horas);
         return new ResponseEntity<>(comunidadAutonomaModificada, HttpStatus.OK);
     }
 

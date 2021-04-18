@@ -3,6 +3,7 @@ package com.sanvalero.covidesp.controller;
 import com.sanvalero.covidesp.controller.errors.Response;
 import com.sanvalero.covidesp.controller.errors.hospital.HospitalNotFoundException;
 import com.sanvalero.covidesp.controller.errors.vacuna.VacunaNotFoundException;
+import com.sanvalero.covidesp.domain.Paciente;
 import com.sanvalero.covidesp.domain.Vacuna;
 import com.sanvalero.covidesp.service.vacuna.VacunaServiceApiInterface;
 import io.swagger.v3.oas.annotations.Operation;
@@ -98,6 +99,22 @@ public class VacunaController {
         List<Vacuna> listadoVacunas = vacunaServiceApiInterface.findByPorcentajeInmunidadGreaterThan(porcentajeInmunidad);
         return new ResponseEntity<>(listadoVacunas, HttpStatus.OK);
     }
+
+
+
+    @Operation(summary = "Modifica el porcentaje de inmunidad de la vacuna")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Se ha modificado correctamente",content = @Content(schema = @Schema(implementation = Vacuna.class))),
+            @ApiResponse(responseCode = "404", description = "La vacuna no existe", content = @Content(schema = @Schema(implementation = Response.class)))
+    })
+    @PatchMapping(value = "/vacunas/{id}/cambiar-porcentajeInmunidad", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Vacuna> modifyPorcentajeInmunidad(@PathVariable long id, @RequestBody float porcentajeInmunidad) {
+        val vacuna = vacunaServiceApiInterface.modifyPorcentajeInmunidad(id, porcentajeInmunidad);
+        logger.info("Se modifica el % de inmunidad de la vacuna con ID -> " + id + " a: " + porcentajeInmunidad);
+        return new ResponseEntity<>(vacuna, HttpStatus.OK);
+    }
+
+
 
 
 

@@ -6,6 +6,7 @@ import com.sanvalero.covidesp.controller.errors.ccaa.CCAANotFoundException;
 import com.sanvalero.covidesp.controller.errors.ciudad.CiudadNotFoundException;
 import com.sanvalero.covidesp.domain.Ciudad;
 import com.sanvalero.covidesp.domain.ComunidadAutonoma;
+import com.sanvalero.covidesp.domain.Paciente;
 import com.sanvalero.covidesp.domain.dto.CiudadDTO;
 import com.sanvalero.covidesp.service.ciudad.CiudadServiceApiInterface;
 import io.swagger.v3.oas.annotations.Operation;
@@ -113,6 +114,19 @@ public class CiudadController {
         ciudadServiceApiInterface.deleteOne(id);
         logger.info("Se elimina la ciudad con ID -> " + id);
         return new ResponseEntity<>(Response.noErrorResponse(), HttpStatus.OK);
+    }
+
+
+    @Operation(summary = "Modifica los casos totales de la ciudad")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Se ha modificado correctamente",content = @Content(schema = @Schema(implementation = Ciudad.class))),
+            @ApiResponse(responseCode = "404", description = "La ciudad no existe", content = @Content(schema = @Schema(implementation = Response.class)))
+    })
+    @PatchMapping(value = "/ciudades/{id}/cambiar-casosTotales", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Ciudad> modifyCasosTotales(@PathVariable long id, @RequestBody int casosTotales) {
+        val ciudad = ciudadServiceApiInterface.modifyCasosTotales(id, casosTotales);
+        logger.info("Se modifican los casos totales de la ciudad con ID -> " + id + " a: " + casosTotales + " casos totales");
+        return new ResponseEntity<>(ciudad, HttpStatus.OK);
     }
 
 

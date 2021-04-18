@@ -16,4 +16,5 @@ public interface HospitalServiceApiInterface {
     Hospital modifyAllFromHospital(long id,HospitalDTO hospitalDTO);
     void deleteHospital(long id);
     List<Hospital> findByFechaCreacionAfter(LocalDate fecha);
+    Hospital modifyDosisAdministradas(long id, int dosisAdministradas);
 }

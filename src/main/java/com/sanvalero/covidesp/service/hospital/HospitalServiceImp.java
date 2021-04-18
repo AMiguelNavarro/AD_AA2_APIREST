@@ -78,5 +78,13 @@ public class HospitalServiceImp implements HospitalServiceApiInterface{
         return hospitalRepository.findByFechaCreacionAfter(fecha);
     }
 
+    @Override
+    public Hospital modifyDosisAdministradas(long id, int dosisAdministradas) {
+        val hospital = hospitalRepository.findById(id)
+                .orElseThrow(() -> new HospitalNotFoundException(id));
+        hospital.setDosisVacunaAdministradas(dosisAdministradas);
+        return hospitalRepository.save(hospital);
+    }
+
 
 }

@@ -12,5 +12,5 @@ public interface CiudadServiceApiInterface {
     List<Ciudad> findFiltradas(int numeroHabitantes, int dosisVacunaAdministradas, boolean planDeVacunacion);
     Ciudad modifyAll(long id, CiudadDTO nuevaCiudadDTO);
     void deleteOne(long id);
-
+    Ciudad modifyCasosTotales(long id, int casosTotales);
 }

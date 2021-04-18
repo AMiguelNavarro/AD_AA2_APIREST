@@ -110,6 +110,20 @@ public class HospitalController {
 
 
 
+    @Operation(summary = "Modifica las dosis de vacuna administradas")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Se ha modificado correctamente",content = @Content(schema = @Schema(implementation = Hospital.class))),
+            @ApiResponse(responseCode = "404", description = "El hospital no existe", content = @Content(schema = @Schema(implementation = Response.class)))
+    })
+    @PatchMapping(value = "/hospitales/{id}/cambiar-dosisAdministradas", produces = "application/json", consumes = "application/json")
+    public ResponseEntity<Hospital> modifyDosisAdministradas(@PathVariable long id, @RequestBody int dosisAdministradas) {
+        val hospital = hospitalServiceApiInterface.modifyDosisAdministradas(id, dosisAdministradas);
+        logger.info("Se modifican las dosis administradas del hospital con ID -> " + id + " a: " + dosisAdministradas + " dosis administradas");
+        return new ResponseEntity<>(hospital, HttpStatus.OK);
+    }
+
+
+
 
 
 

@@ -116,6 +116,7 @@ public class PacienteController {
     public ResponseEntity<Paciente> modifyPositivoUltimas24Horas(@PathVariable long id, @RequestBody String positivoCovid) {
         boolean positivo = Boolean.parseBoolean(positivoCovid);
         val paciente = pacienteServiceApiInterface.modifyPositivoCovid(id, positivo);
+        logger.info("Se modifica si el paciente es positivo en covid con ID -> " + id + " a: " + positivoCovid);
         return new ResponseEntity<>(paciente, HttpStatus.OK);
     }
 

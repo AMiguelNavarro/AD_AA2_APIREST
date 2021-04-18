@@ -91,4 +91,12 @@ public class CiudadServiceImp implements CiudadServiceApiInterface{
         ciudadRepository.delete(ciudadEliminar);
     }
 
+    @Override
+    public Ciudad modifyCasosTotales(long id, int casosTotales) {
+        val ciudad = ciudadRepository.findById(id)
+                .orElseThrow(() -> new CiudadNotFoundException(id));
+        ciudad.setCasosTotales(casosTotales);
+        return ciudadRepository.save(ciudad);
+    }
+
 }

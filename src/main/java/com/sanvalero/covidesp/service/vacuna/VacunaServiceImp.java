@@ -53,4 +53,12 @@ public class VacunaServiceImp implements VacunaServiceApiInterface{
     public List<Vacuna> findByPorcentajeInmunidadGreaterThan(float porcentajeInmunidad) {
         return vacunaRepository.findByPorcentajeInmunidadGreaterThan(porcentajeInmunidad);
     }
+
+    @Override
+    public Vacuna modifyPorcentajeInmunidad(long id, float porcentajeInmunidad) {
+        val vacuna = vacunaRepository.findById(id)
+                .orElseThrow(() -> new VacunaNotFoundException(id));
+        vacuna.setPorcentajeInmunidad(porcentajeInmunidad);
+        return vacunaRepository.save(vacuna);
+    }
 }
