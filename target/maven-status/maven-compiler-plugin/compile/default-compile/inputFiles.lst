@@ -11,6 +11,7 @@ D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\c
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\domain\Hospital.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\controller\errors\vacuna\VacunaNotFoundException.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\domain\dto\CiudadDTO.java
+D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\jwtAutorizacion\JWTAutorizacionFiltro.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\controller\errors\ccaa\CCAANotFoundException.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\controller\HospitalController.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\service\ciudad\CiudadServiceImp.java
@@ -22,6 +23,7 @@ D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\c
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\domain\Vacuna.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\controller\errors\ciudad\CiudadNotFoundException.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\service\ccaa\CCAAServiceApiInterface.java
+D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\controller\UsuarioController.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\repository\HospitalRepository.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\repository\CiudadRepository.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\configuration\ApiConfigSwagger.java
@@ -34,3 +36,4 @@ D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\c
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\CovidespApplication.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\controller\CiudadController.java
 D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\service\vacuna\VacunaServiceApiInterface.java
+D:\ACTIVIDADES DE APRENDIZAJE\2ªEV\AD\Desarrollo\AD_AA2_APIREST\src\main\java\com\sanvalero\covidesp\domain\Usuario.java

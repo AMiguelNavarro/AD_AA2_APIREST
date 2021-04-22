@@ -26,10 +26,14 @@ public class CovidespApplication {
 			http.csrf().disable()
 					.addFilterAfter(new JWTAutorizacionFiltro(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests()
-					.antMatchers(HttpMethod.POST, "/usuario").permitAll()
-					.anyRequest().authenticated();
+					.antMatchers(HttpMethod.POST, "/usuarios").permitAll()
+					.antMatchers(HttpMethod.GET, "/ciudades").authenticated()
+					.antMatchers(HttpMethod.GET, "/ccaa").authenticated()
+					.antMatchers(HttpMethod.GET, "/hospitales").authenticated()
+					.antMatchers(HttpMethod.GET, "/pacientes").authenticated()
+					.antMatchers(HttpMethod.GET, "/vacunas").authenticated()
+					.anyRequest().permitAll();
 		}
 	}
-
 
 }
